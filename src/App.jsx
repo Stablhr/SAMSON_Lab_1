@@ -13,7 +13,7 @@ function App() {
       <main className="relative z-10 flex h-full min-h-0 flex-col">
         <header className="app-header shrink-0 px-4 text-center">
           <h1 className="mb-1 font-display text-lg font-bold tracking-tight text-bmo-ink drop-shadow-sm sm:text-2xl md:text-3xl">
-            Samson, Aries B.<span className="text-[#F2D06B]"> :)</span>
+            Samson, Aries B.<span className="text-[#F2D06B]"> :</span>
           </h1>
           <p className="mb-2 text-xs font-medium text-[#5C7A80] sm:text-sm">BSIT 3-3</p>
         </header>
@@ -29,7 +29,7 @@ function App() {
             rel="noreferrer"
             className="transition duration-150 hover:text-[#F2D06B]"
           >
-            Simple Calculator Project
+            Laboratory 1
           </a>
         </footer>
       </main>
