@@ -9,7 +9,7 @@ const readCssVar = (name, fallback) => {
   return Number.isFinite(value) ? value : fallback
 }
 
-function Calculator() {
+function Calculator({ guideOpen = false }) {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [happy, setHappy] = useState(false)
   const [fitW, setFitW] = useState(0)
@@ -60,6 +60,7 @@ function Calculator() {
 
   useEffect(() => {
     const onKeyDown = (e) => {
+      if (guideOpen) return
       if (e.ctrlKey || e.metaKey || e.altKey) return
       const { key } = e
       if (/^[0-9]$/.test(key)) {
@@ -85,7 +86,7 @@ function Calculator() {
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [])
+  }, [guideOpen])
 
   // Fit the whole calculator to the available screen, no scrolling, responsive.
   useLayoutEffect(() => {

@@ -32,6 +32,7 @@ src/
  │   ├─ Display.jsx        → expression line + result (auto-shrink, flash, aria-live)
  │   ├─ Keypad.jsx         → declarative basic/sci button grids
  │   ├─ Button.jsx         → sticker button (variants: digit/operator/equals/utility/function/toggle)
+ │   ├─ UserGuide.jsx     → `?` trigger + help dialog (key reference, shortcuts, tips, errors)
  │   └─ (history panel inline in Calculator.jsx)
  ├─ utils/
  │   ├─ calculatorState.js → reducer: input/operator/equals/clear/backspace/
@@ -50,7 +51,8 @@ src/
 7. **Basic / Sci mode toggle** — segmented pills switch keypad layouts (`aria-pressed`).
 8. **DEG/RAD toggle** — angle mode feeds the parser's trig functions.
 9. **History panel** — click an entry to reload its expression; Clear button; only rendered when non-empty.
-10. **Animations** — squishy key press (`translate-y + scale + shadow-none`), `equals-glow` pulse, happy-face wobble on `=`, result flash/slide-in.
+10. **In-app user guide** — `?` button (top-right) opens a sticker-styled help dialog: key reference (basic + sci), keyboard shortcuts, tips, and error meanings. Closes via `✕`, `Esc`, backdrop, or "got it :)"; calculator keys are ignored while it is open (`Calculator.jsx` guards its global `keydown` on `guideOpen`).
+11. **Animations** — squishy key press (`translate-y + scale + shadow-none`), `equals-glow` pulse, happy-face wobble on `=`, result flash/slide-in.
 
 ## 6. Sections Required
 - **Header**: student name + `:)`, section subtitle (BSIT 3-3).
@@ -82,6 +84,7 @@ src/
 10. Fit-to-screen responsive sizing across breakpoints ✅
 11. Tests (`node --test`) + oxlint ✅
 12. Polish (stale `index.html` meta description/theme-color, favicon, final QA) ⬜
+13. In-app user guide dialog ✅
 
 ## 10. Stretch Goals (optional, time-permitting)
 - Persist history to `localStorage`

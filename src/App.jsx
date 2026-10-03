@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import Calculator from './components/Calculator.jsx'
+import UserGuide from './components/UserGuide.jsx'
 
 function App() {
+  const [guideOpen, setGuideOpen] = useState(false)
+
   return (
     <div className="kawaii-bg app-shell relative overflow-hidden text-bmo-ink">
       <span className="float-shape left-[8%] top-[10%] text-4xl opacity-60">☁️</span>
@@ -9,6 +13,14 @@ function App() {
       <span className="float-shape right-[14%] bottom-[24%] text-4xl opacity-60">☁️</span>
       <span className="float-shape left-[22%] top-[48%] hidden text-2xl opacity-40 sm:block">💫</span>
       <span className="float-shape right-[20%] top-[55%] hidden text-2xl opacity-40 sm:block">🫧</span>
+
+      <div className="absolute right-3 top-[calc(env(safe-area-inset-top,0px)+0.5rem)] z-20 sm:right-4 sm:top-[calc(env(safe-area-inset-top,0px)+1rem)]">
+        <UserGuide
+          open={guideOpen}
+          onOpen={() => setGuideOpen(true)}
+          onClose={() => setGuideOpen(false)}
+        />
+      </div>
 
       <main className="relative z-10 flex h-full min-h-0 flex-col">
         <header className="app-header shrink-0 px-4 text-center">
@@ -19,7 +31,7 @@ function App() {
         </header>
 
         <div className="flex min-h-0 w-full flex-1 flex-col px-3 sm:px-4">
-          <Calculator />
+          <Calculator guideOpen={guideOpen} />
         </div>
 
         <footer className="app-footer shrink-0 text-center text-xs font-medium text-[#7A9A92]">
