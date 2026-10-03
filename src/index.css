@@ -210,6 +210,43 @@ button {
   display: none;
 }
 
+/* Inset sticker scrollbar for the user guide dialog. */
+.guide-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #1b2e2a #93cb9f;
+}
+
+.guide-scroll::-webkit-scrollbar {
+  width: 14px;
+}
+
+.guide-scroll::-webkit-scrollbar-track {
+  background: #93cb9f;
+  border: 3px solid #a8d8b9;
+  border-radius: 999px;
+}
+
+.guide-scroll::-webkit-scrollbar-thumb {
+  background: #1b2e2a;
+  border: 3px solid #a8d8b9;
+  border-radius: 999px;
+}
+
+.guide-scroll::-webkit-scrollbar-thumb:hover {
+  background: #2e554b;
+}
+
+@media (max-width: 640px) {
+  .guide-scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .guide-scroll::-webkit-scrollbar-track,
+  .guide-scroll::-webkit-scrollbar-thumb {
+    border-width: 2px;
+  }
+}
+
 @keyframes result-in {
   from {
     opacity: 0;

@@ -116,10 +116,10 @@ function UserGuide({ open, onOpen, onClose }) {
             tabIndex={-1}
             onClick={(e) => e.stopPropagation()}
             onKeyDown={(e) => e.stopPropagation()}
-            className="help-panel max-h-[85dvh] w-full max-w-lg overflow-y-auto rounded-[2rem] border-[3px] border-bmo-ink bg-bmo-body p-4 outline-none sm:p-6"
+            className="help-panel flex max-h-[85dvh] w-full max-w-lg flex-col overflow-hidden rounded-[2rem] border-[3px] border-bmo-ink bg-bmo-body outline-none"
             style={{ boxShadow: '0 18px 35px -12px rgba(27, 46, 42, 0.5)' }}
           >
-            <div className="mb-3 flex items-start justify-between gap-3">
+            <div className="flex shrink-0 items-start justify-between gap-3 border-b-[3px] border-bmo-ink/15 px-4 pt-4 pb-3 sm:px-6 sm:pt-5 sm:pb-4">
               <div>
                 <h2
                   id="user-guide-title"
@@ -141,35 +141,39 @@ function UserGuide({ open, onOpen, onClose }) {
               </button>
             </div>
 
-            <div className="mb-4 rounded-2xl border-[3px] border-bmo-ink bg-bmo-screen px-3 py-2.5 shadow-[0_3px_0_0_#11251F]">
-              <p className="text-sm leading-snug text-bmo-glow">
-                <span className="font-bold">In a nutshell:</span> switch between{' '}
-                <span className="font-bold">Basic</span> and <span className="font-bold">Sci</span>{' '}
-                with the two pills, build an expression with the keys, then press{' '}
-                <span className="font-bold">=</span>. Results land in{' '}
-                <span className="font-bold">history</span> for reuse.
+            <div className="guide-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-6 sm:py-5">
+              <div className="mb-4 rounded-2xl border-[3px] border-bmo-ink bg-bmo-screen px-3 py-2.5 shadow-[0_3px_0_0_#11251F]">
+                <p className="text-sm leading-snug text-bmo-glow">
+                  <span className="font-bold">In a nutshell:</span> switch between{' '}
+                  <span className="font-bold">Basic</span> and <span className="font-bold">Sci</span>{' '}
+                  with the two pills, build an expression with the keys, then press{' '}
+                  <span className="font-bold">=</span>. Results land in{' '}
+                  <span className="font-bold">history</span> for reuse.
+                </p>
+              </div>
+
+              <Section title="Basic pad" rows={BASIC_ROWS} />
+              <Section title="Sci pad" rows={SCI_ROWS} />
+              <Section title="Keyboard" rows={SHORTCUT_ROWS} keys />
+              <Section title="Good to know" rows={TIP_ROWS} />
+
+              <p className="rounded-2xl border-2 border-bmo-ink/40 bg-white/60 px-3 py-2 text-xs leading-snug text-[#3F5C54]">
+                <span className="font-bold text-bmo-ink">Error</span> means the expression can’t
+                be solved — dividing by zero, an unfinished expression, a negative under √ or x!,
+                or a number too large to hold. Press <span className="font-bold">AC</span> or just
+                start typing to begin again.
               </p>
             </div>
 
-            <Section title="Basic pad" rows={BASIC_ROWS} />
-            <Section title="Sci pad" rows={SCI_ROWS} />
-            <Section title="Keyboard" rows={SHORTCUT_ROWS} keys />
-            <Section title="Good to know" rows={TIP_ROWS} />
-
-            <p className="mt-4 rounded-2xl border-2 border-bmo-ink/40 bg-white/60 px-3 py-2 text-xs leading-snug text-[#3F5C54]">
-              <span className="font-bold text-bmo-ink">Error</span> means the expression can’t be
-              solved — dividing by zero, an unfinished expression, a negative under √ or x!, or a
-              number too large to hold. Press <span className="font-bold">AC</span> or just start
-              typing to begin again.
-            </p>
-
-            <button
-              type="button"
-              onClick={onClose}
-              className="mt-4 w-full rounded-full border-[3px] border-bmo-ink bg-bmo-equals px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-bmo-ink shadow-[0_4px_0_0_#1B2E2A] transition-all duration-150 ease-out hover:bg-bmo-equals-dark active:translate-y-[3px] active:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F2D06B] focus-visible:ring-offset-2"
-            >
-              got it :)
-            </button>
+            <div className="shrink-0 border-t-[3px] border-bmo-ink/15 px-4 pt-3 pb-4 sm:px-6 sm:pb-5">
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-full rounded-full border-[3px] border-bmo-ink bg-bmo-equals px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-bmo-ink shadow-[0_4px_0_0_#1B2E2A] transition-all duration-150 ease-out hover:bg-bmo-equals-dark active:translate-y-[3px] active:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F2D06B] focus-visible:ring-offset-2"
+              >
+                got it :)
+              </button>
+            </div>
           </div>
         </div>
       )}
